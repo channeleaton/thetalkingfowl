@@ -37,6 +37,10 @@ register_nav_menus( array(
 
 add_theme_support( 'automatic-feed-links' );
 
+// Add post format support
+
+add_theme_support( 'post-formats', array('gallery', 'link', 'image', 'quote', 'video', 'audio', 'chat'));
+
 ///////////////////////////////// Add thumbnail support  /////////////////////////////////
 
 if ( function_exists( 'add_theme_support' ) ) { 
