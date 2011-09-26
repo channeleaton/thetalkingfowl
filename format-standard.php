@@ -1,4 +1,3 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class('grid_12 alpha'); ?>>
   <header class="entry-header">
     <h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'thetalkingfowl' ), the_title_attribute( 'echo=0' ) ); ?>" rel="bookmark"><?php the_title(); ?>&nbsp;</a></h1>
           
@@ -29,13 +28,3 @@
   </div><!-- .entry-content -->
   <?php endif; ?>
 
-  <footer class="entry-meta">
-    <span class="cat-links"><span class="entry-utility-prep entry-utility-prep-cat-links"><?php _e( 'Posted in ', 'thetalkingfowl' ); ?></span><?php the_category( ', ' ); ?></span>
-    <span class="sep"> | </span>
-    <?php the_tags( '<span class="tag-links">' . __( 'Tagged ', 'thetalkingfowl' ) . '</span>', ', ', '<span class="sep"> | </span>' ); ?>
-    <span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'thetalkingfowl' ), __( '1 Comment', 'thetalkingfowl' ), __( '% Comments', 'thetalkingfowl' ) ); ?></span>
-    <?php edit_post_link( __( 'Edit', 'thetalkingfowl' ), '<span class="sep">|</span> <span class="edit-link">', '</span>' ); ?>
-  </footer><!-- #entry-meta -->
-</article><!-- #post-<?php the_ID(); ?> -->
-
-<?php comments_template( '', true ); ?>

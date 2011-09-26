@@ -86,13 +86,28 @@
 	<?php } ?>
 
 
-	<?php while ( have_posts() ) : the_post();
-    if (!get_post_format()) {
+  <?php while ( have_posts() ) : the_post();?>
+    <article id="post-<?php the_ID(); ?>" <?php post_class('grid_12 alpha'); ?>>
+    <?php // Check the post format the pull the correct template part: format-foo.php ?>
+    <?php if (!get_post_format()) {
       get_template_part('format', 'standard');
     } else {
       get_template_part('format', get_post_format());
-    }
-	 endwhile; ?>
+    }?>
+    
+    <footer class="entry-meta">
+      <span class="cat-links"><span class="entry-utility-prep entry-utility-prep-cat-links"><?php _e( 'Posted in ', 'thetalkingfowl' ); ?></span><?php the_category( ', ' ); ?></span>
+      <span class="sep"> | </span>
+      <?php the_tags( '<span class="tag-links">' . __( 'Tagged ', 'thetalkingfowl' ) . '</span>', ', ', '<span class="sep"> | </span>' ); ?>
+      <span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'thetalkingfowl' ), __( '1 Comment', 'thetalkingfowl' ), __( '% Comments', 'thetalkingfowl' ) ); ?></span>
+      <?php edit_post_link( __( 'Edit', 'thetalkingfowl' ), '<span class="sep">|</span> <span class="edit-link">', '</span>' ); ?>
+    </footer><!-- #entry-meta -->
+
+    </article><!-- #post-<?php the_ID(); ?> -->
+
+    <?php comments_template( '', true ); ?>
+
+   <?php endwhile; ?>
 	
 	<?php //////////////////////////////////////////   Display navigation to next/previous pages when applicable //////////////////////////////////////////   ?>
 	<?php if (  $wp_query->max_num_pages > 1 ) : ?>
